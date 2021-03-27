@@ -28,12 +28,16 @@ router.post("/login", async (req, res) => {
         // check email
         const user = await User.findOne({ where: { email: req.body.email }});
 
-        if (!user) throw Error("no user");
-		
+        if (!user) {
+            throw Error("no user");
+        }
+
         // check password
         const valid = await compare(req.body.password, user.password);
 
-        if (!valid) throw Error("bad password");
+        if (!valid) {
+            throw Error("bad password");
+        }
 
         // login success
 
@@ -77,7 +81,9 @@ router.post("/refresh_token", async (req, res) => {
     const user = await User.findByPk(payload.userId);
 
     // fail without user
-    if (!user) return res.status(403).send({ ok: false, accessToken: "" });
+    if (!user) {
+        return res.status(403).send({ ok: false, accessToken: "" });
+    }
 
     // fail if tokenVersions dont match
     if (user.tokenVersion !== payload.tokenVersion) {

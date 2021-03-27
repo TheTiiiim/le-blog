@@ -2,19 +2,19 @@ $(() => {
     const getFormSubmitHandler = (endpoint, redirect) => {
         return (e) => {
             e.preventDefault();
-                    
+
             // get data
             let form = $(e.target);
             let formData = form.serializeArray();
-            
+
             // format data for api
             const registerDetails = {};
             formData.forEach(({ name: key, value }) => {
                 registerDetails[key] = value;
             });
-            
+
             $.post(endpoint, registerDetails)
-                .done((data) => {
+                .done(() => {
                     window.location.href = redirect;
                 })
                 .fail((err) => {

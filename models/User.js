@@ -35,7 +35,7 @@ User.init(
             defaultValue: DataTypes.NOW,
         },
         tokenVersion: {
-            type: DataTypes.INTEGER                     ,
+            type: DataTypes.INTEGER ,
             allowNull: false,
             defaultValue: 0,
         },
