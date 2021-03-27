@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const { User } = require("../../models");
 const { createAccessToken, createRefreshToken, sendRefreshToken, revokeRefreshTokensForUser } = require("../../utils/auth");
+const { requireAuth } = require("../../middlewares/auth");
 
 // "/" endpoint
 
@@ -48,7 +49,7 @@ router.post("/login", async (req, res) => {
     }
 });
 
-router.post("/logout", async (req, res) => {
+router.post("/logout", requireAuth, async (req, res) => {
     res.clearCookie("jid");
     revokeRefreshTokensForUser(req.authPayload.userId);
     res.sendStatus(200);
