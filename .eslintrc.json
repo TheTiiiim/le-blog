@@ -1,7 +1,6 @@
 {
 	"env": {
 		"node": true,
-		"commonjs": true,
 		"es2021": true
 	},
 	"extends": "eslint:recommended",
@@ -28,6 +27,14 @@
 		"semi": [
 			"error",
 			"always"
+		],
+		"object-curly-spacing": [
+			"error",
+			"always",
+			{
+				"arraysInObjects": false,
+				"objectsInObjects": false
+			}
 		]
 	}
 }
