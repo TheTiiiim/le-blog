@@ -8,7 +8,7 @@ User.hasMany(Post, {
     onDelete: "CASCADE",
 });
 
-// Products belongsTo Category
+// Post belongsTo User
 Post.belongsTo(User, {
     foreignKey: "user_id",
 });
