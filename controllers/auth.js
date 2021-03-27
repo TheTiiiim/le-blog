@@ -13,4 +13,10 @@ router.get("/register", (req, res) => {
     res.render("register");
 });
 
+router.get("/logout", requireSession, async (req, res) => {
+    res.clearCookie("jid");
+    revokeRefreshTokensForUser(req.sessionPayload.userId);
+    res.render("logout");
+});
+
 module.exports = router;

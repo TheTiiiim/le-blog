@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { User } = require("../models");
 
 const api = require("./api");
+const auth = require("./auth");
 
 const { isSession } = require("../middlewares/auth");
 router.use(isSession);
@@ -18,5 +19,6 @@ router.get("/", async (req, res) => {
 });
 
 router.use("/api", api);
+router.use("/", auth);
 
 module.exports = router;
