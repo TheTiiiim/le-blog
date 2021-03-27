@@ -3,6 +3,9 @@ const { User } = require("../models");
 
 const api = require("./api");
 
+const { isSession } = require("../middlewares/auth");
+router.use(isSession);
+
 // routes
 router.get("/", async (req, res) => {
     const dbUserData = await User.findAll();
