@@ -1,0 +1,46 @@
+/* flex setup */
+.flexContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+.flexContainer.flexReverse {
+    flex-direction: row-reverse;
+}
+
+.flexContainer > .flexExpander {
+    flex-grow: 1;
+}
+
+header {
+    height: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    background-color: cyan;
+}
+
+header nav {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+header a {
+    color:black;
+    padding: 0 10px;
+}
+
+/* center align links */
+header a::before {
+    content: '';
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+header a:hover {
+    background-color: blue;
+    color:white;
+    text-decoration: none;
+}

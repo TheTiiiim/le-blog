@@ -1,0 +1,17 @@
+<header class="flexContainer">
+    <a class="logo" href="/"><span>home</span></a>
+
+    <nav class="flexExpander flexContainer">
+        <a href="/users"><span>users</span></a>
+        <a href="/posts"><span>posts</span></a>
+    </nav>
+
+    <div class="flexContainer flexReverse">
+        {{#if cookieUser}}
+            <a href="/logout"><span>logout</span></a>
+            <a href="/dashboard"><span>dashboard</span></a>
+        {{else}}
+            <a href="/login"><span>login</span></a>
+        {{/if}}
+    </div>
+</header>
