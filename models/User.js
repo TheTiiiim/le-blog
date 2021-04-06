@@ -25,14 +25,13 @@ User.init(
                 isEmail: true,
             },
         },
+        bio: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        date_created: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW,
         },
         tokenVersion: {
             type: DataTypes.INTEGER ,
@@ -52,7 +51,7 @@ User.init(
             },
         },
         sequelize,
-        timestamps: false,
+        timestamps: true,
         freezeTableName: true,
         underscored: true,
         modelName: "user",
