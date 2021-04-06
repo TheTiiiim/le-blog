@@ -31,7 +31,7 @@ header a {
     padding: 0 10px;
 }
 
-/* center align links */
+/* center align header links */
 header a::before {
     content: '';
     height: 100%;
@@ -43,4 +43,61 @@ header a:hover {
     background-color: blue;
     color:white;
     text-decoration: none;
+}
+
+main {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+}
+
+.userCard {
+    width: 100%;
+    background-color: lightgrey;
+    border: 1px solid gray;
+    border-radius: 20px;
+    position: relative;
+}
+
+.userSplash {
+    height: 100px;
+    border-radius: 20px 20px 0 0;
+    background-color: yellow;
+}
+
+.profilePicture {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    top: 40px;
+    left: 40px;
+    background-color: blue;
+    border-radius: 50%;
+}
+
+.userInfo {
+    padding: 50px 40px 20px;
+}
+
+.optionsIcon {
+    background-image: url("/images/options.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    right: 20px;
+    top: 115px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.optionsIcon:hover {
+    background-color: #0002
+}
+
+.optionsIcon:active {
+    background-color: #0004
 }
