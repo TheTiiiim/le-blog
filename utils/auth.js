@@ -17,6 +17,7 @@ const createRefreshToken = async (user) => {
 
 const sendRefreshToken = (res, token) => {
     res.cookie("jid", token, {
+        // secure: true,
         httpOnly: true,
     });
 };

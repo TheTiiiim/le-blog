@@ -5,8 +5,8 @@ const api = require("./api");
 const user = require("./user");
 const auth = require("./auth");
 
-const { isSession } = require("../middlewares/auth");
-router.use(isSession);
+const { isCookie } = require("../middlewares/auth");
+router.use(isCookie);
 
 // routes
 router.get("/", async (req, res) => {

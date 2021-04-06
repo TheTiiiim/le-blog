@@ -1,6 +1,7 @@
 const { verify } = require("jsonwebtoken");
+const { User } = require("../models");
 
-const isAuth = (req, res, next) => {
+const isAuth = async (req, res, next) => {
     const authorization = req.headers.authorization;
 
     if (!authorization) {
@@ -8,9 +9,18 @@ const isAuth = (req, res, next) => {
     }
 
     try {
+        // get token
         const token = authorization.split(" ")[1];
+        // get payload
         const payload = verify(token, process.env.ACCESS_TOKEN_SECRET);
-        req.authPayload = payload;
+        // get user
+        const userData = await User.findsByPk(payload.userId);
+        // ensure user exists
+        if (!userData) {
+            throw Error("no user");
+        }
+        // attatch user to request
+        req.authUserData = userData;
         return next();
     } catch (err) {
         return next();
@@ -18,14 +28,14 @@ const isAuth = (req, res, next) => {
 };
 
 const requireAuth = (req, res, next) => {
-    if (req.authPayload) {
+    if (req.authUserData) {
         return next();
     } else {
         res.sendStatus(403);
     }
 };
 
-const isSession = (req, res, next) => {
+const isCookie = async (req, res, next) => {
     // get token
     const token = req.cookies.jid;
 
@@ -37,19 +47,29 @@ const isSession = (req, res, next) => {
     try {
         // get payload
         payload = verify(token, process.env.REFRESH_TOKEN_SECRET);
-        req.sessionPayload = payload;
+        // get user
+        const userData = await User.findByPk(payload.userId);
+        // ensure user exists
+        if (!userData) {
+            throw Error("no user");
+        }
+        // attatch user to request
+        req.cookieUserData = userData;
+        // pass user object to template engine
+        res.locals.cookieUser = userData.get({ plain: true });
         return next();
     } catch (err) {
+        console.log(err);
         return next();
     }
 };
 
-const requireSession = (req, res, next) => {
-    if (req.sessionPayload) {
+const requireCookie = (req, res, next) => {
+    if (req.cookieUserData) {
         return next();
     } else {
         res.redirect("/login");
     }
 };
 
-module.exports = { isAuth, requireAuth, requireSession, isSession };
+module.exports = { isAuth, requireAuth, requireCookie, isCookie };
