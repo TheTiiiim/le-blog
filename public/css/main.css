@@ -52,7 +52,9 @@ main {
     padding-top: 20px;
 }
 
-.userCard {
+/* user card */
+
+.user {
     width: 100%;
     background-color: lightgrey;
     border: 1px solid gray;
@@ -60,13 +62,13 @@ main {
     position: relative;
 }
 
-.userSplash {
+.user .userSplash {
     height: 100px;
     border-radius: 20px 20px 0 0;
     background-color: yellow;
 }
 
-.profilePicture {
+.user .profilePicture {
     position: absolute;
     height: 100px;
     width: 100px;
@@ -76,22 +78,27 @@ main {
     border-radius: 50%;
 }
 
-.userInfo {
+.user .optionsIcon {
+    height: 30px;
+    width: 30px;
+    right: 20px;
+    top: 115px;
+}
+
+.user .userContent {
     padding: 50px 40px 20px;
 }
+
+/* options button */
 
 .optionsIcon {
     background-image: url("/images/options.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: absolute;
-    height: 30px;
-    width: 30px;
-    right: 20px;
-    top: 115px;
     cursor: pointer;
     border-radius: 50%;
+    position: absolute;
 }
 
 .optionsIcon:hover {
@@ -100,4 +107,20 @@ main {
 
 .optionsIcon:active {
     background-color: #0004
+}
+
+/* horizontal flex menu */
+
+.flexContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+.flexContainer.flexReverse {
+    flex-direction: row-reverse;
+}
+
+.flexContainer > .flexExpander {
+    flex-grow: 1;
 }
