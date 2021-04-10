@@ -17,7 +17,7 @@ router.get("/user/:id", async (req, res) => {
     try {
         let userData;
         // if viewing user in cookie
-        if (req.cookieUserData.id === parseInt(req.params.id)) {
+        if (req.cookieUserData?.id === parseInt(req.params.id)) {
             // set userData to match
             userData = req.cookieUserData;
             // set dashboard flag
