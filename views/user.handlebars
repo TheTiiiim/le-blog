@@ -1,4 +1,4 @@
-<div class="user">
+<div class="card user">
     <div class="userSplash"></div>
     <div class="profilePicture"></div>
     <span class="optionsIcon"></span>
@@ -8,3 +8,7 @@
         <p>{{user.bio}}</p>
     </div>
 </div>
+
+{{#each user.posts as |post|}}
+    {{> post post=post user=../user link=true}}
+{{/each}}

@@ -12,22 +12,12 @@ header nav {
 }
 
 header a {
-    color:black;
     padding: 0 10px;
-}
-
-/* center align header links */
-header a::before {
-    content: '';
-    height: 100%;
-    display: inline-block;
-    vertical-align: middle;
 }
 
 header a:hover {
     background-color: blue;
     color:white;
-    text-decoration: none;
 }
 
 main {
@@ -37,15 +27,22 @@ main {
     padding-top: 20px;
 }
 
-/* user card */
+/* general card */
 
-.user {
+.card {
     width: 100%;
     background-color: lightgrey;
     border: 1px solid gray;
     border-radius: 20px;
     position: relative;
 }
+
+.card .profilePicture {
+    background-color: blue;
+    border-radius: 50%;
+}
+
+/* user card */
 
 .user .userSplash {
     height: 100px;
@@ -59,13 +56,9 @@ main {
     width: 100px;
     top: 40px;
     left: 40px;
-    background-color: blue;
-    border-radius: 50%;
 }
 
 .user .optionsIcon {
-    height: 30px;
-    width: 30px;
     right: 20px;
     top: 115px;
 }
@@ -76,15 +69,8 @@ main {
 
 /* post card */
 
-.post {
-    width: 100%;
-    background-color: lightgrey;
-    border: 1px solid gray;
-    border-radius: 20px;
-    position: relative;
-}
-
-.post .userInfo {
+.post .userInfo,
+.post .postContent {
     padding: 0 40px;
     margin: 20px 0;
 }
@@ -92,8 +78,6 @@ main {
 .post .profilePicture {
     height: 50px;
     width: 50px;
-    background-color: blue;
-    border-radius: 50%;
 }
 
 .post .userInfo a {
@@ -101,24 +85,9 @@ main {
     padding: 0 10px;
 }
 
-/* center align user links */
-.post .userInfo a::before {
-    content: '';
-    height: 100%;
-    display: inline-block;
-    vertical-align: middle;
-}
-
 .post .optionsIcon {
-    height: 30px;
-    width: 30px;
     right: 20px;
     top: 15px;
-}
-
-.post .postContent {
-    padding: 0 40px;
-    margin: 20px 0;
 }
 
 /* options button */
@@ -131,6 +100,8 @@ main {
     cursor: pointer;
     border-radius: 50%;
     position: absolute;
+    height: 30px;
+    width: 30px;
 }
 
 .optionsIcon:hover {
@@ -155,4 +126,21 @@ main {
 
 .flexContainer > .flexExpander {
     flex-grow: 1;
+}
+
+/* utility */
+
+.vCenter::before {
+    content: '';
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.noDecoration {
+    color:black;
+}
+
+.noDecoration:hover {
+    text-decoration: none;
 }

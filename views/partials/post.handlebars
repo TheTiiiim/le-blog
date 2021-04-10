@@ -1,0 +1,19 @@
+<div class="card post">
+    <div class="userInfo flexContainer">
+        <div class="profilePicture"></div>
+        <a class="vCenter" href="/user/{{user.id}}"><span>{{user.name}}</span></a>
+    </div>
+    <span class="optionsIcon"></span>
+    <div class="postContent">
+        {{#if link}}
+            <a class="noDecoration" href="/post/{{post.id}}">
+        {{/if}}
+
+        <h1>{{post.title}}</h1>
+
+        {{#if link}}
+            </a>
+        {{/if}}
+        <p>{{post.content}}</p>
+    </div>
+</div>
